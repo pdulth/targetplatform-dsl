@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2014 Obeo.
+ * Copyright (c) 2012-2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Mikael Barbero (Obeo) - initial API and implementation
+ *     Minh Tu TON THAT
  *******************************************************************************/
 package fr.obeo.releng.targetplatform;
 
@@ -42,7 +43,7 @@ public class TargetPlatformBundleActivator extends Plugin {
 	
 	public static final String TARGET_PLATFORM_LANGUAGE_NAME = "fr.obeo.releng.TargetPlatform";
 	
-	private static final Logger logger = Logger.getLogger(TargetPlatformBundleActivator.class);
+	public static final Logger logger = Logger.getLogger(TargetPlatformBundleActivator.class);
 	
 	private static TargetPlatformBundleActivator INSTANCE;
 	

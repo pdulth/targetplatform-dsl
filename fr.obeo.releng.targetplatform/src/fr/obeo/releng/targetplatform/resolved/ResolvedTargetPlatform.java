@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012-2014 Obeo.
+ * Copyright (c) 2012-2018 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *     Mikael Barbero (Obeo) - initial API and implementation
+ *     Minh Tu TON THAT
  *******************************************************************************/
 package fr.obeo.releng.targetplatform.resolved;
 import java.net.URISyntaxException;
@@ -103,6 +104,8 @@ public class ResolvedTargetPlatform {
 				}
 			}
 			Location firstLocation = locationIndex.get(locationUri).get(0);
+			// Set the mirror of location uri
+			firstLocation.setUri(MirrorManager.getInstance().getMirrorUrl(firstLocation.getUri()));
 			ResolvedLocation resolvedLocation = new ResolvedLocation(firstLocation.getID(), firstLocation.getUri(), ius, getOptionSet(firstLocation.getOptions()));
 			locations.addFirst(resolvedLocation);
 		}
