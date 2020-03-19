@@ -11,6 +11,8 @@ location "http://download.eclipse.org/eclipse/updates/4.7" {
 location "http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/" {
 	org.eclipse.emf.ecore.xcore.feature.group [1.2.0,2.0.0)
 	org.eclipse.emf.ecore.xcore.source.feature.group [1.2.0,2.0.0)
+	org.eclipse.emf.ecore.xcore.sdk.feature.group [1.2.0,2.0.0)
+	org.eclipse.emf.ecore.xcore.ui.feature.group [1.2.0,2.0.0)
 }
 
 location "http://download.eclipse.org/modeling/tmf/xtext/updates/releases/maintenance/R201409160908/" {
@@ -25,6 +27,8 @@ location "http://download.eclipse.org/modeling/tmf/xtext/updates/releases/mainte
 	
 	org.objectweb.asm 
 	org.objectweb.asm.source
+	
+	org.eclipse.xtend.sdk.feature.group
 }
 
 // required for resolving dependencies of Xtext

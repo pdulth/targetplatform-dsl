@@ -12,6 +12,7 @@ package fr.obeo.releng.targetplatform.pde;
 
 import java.io.File;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -25,6 +26,8 @@ import com.google.inject.Injector;
 
 import fr.obeo.releng.targetplatform.TargetPlatformBundleActivator;
 import fr.obeo.releng.targetplatform.TargetPlatformStandaloneSetup;
+import fr.obeo.releng.targetplatform.resolved.MavenSettingsManager;
+import fr.obeo.releng.targetplatform.resolved.MavenSettingsManager.Server;
 
 /**
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
@@ -48,6 +51,10 @@ public class ConverterApplication implements IApplication {
     } else {
       path = args[0];
     }
+    
+    MavenSettingsManager mavenSettingsManager = MavenSettingsManager.getInstance();
+	  List<Server> serverSettings = mavenSettingsManager.getServerSettings();
+	  mavenSettingsManager.overrideP2ServerSettings(serverSettings);    
 
     TargetPlatformStandaloneSetup.doSetup();
     Injector injector = TargetPlatformBundleActivator.getInstance()
