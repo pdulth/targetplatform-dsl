@@ -105,7 +105,7 @@ public class ResolvedTargetPlatform {
 			}
 			Location firstLocation = locationIndex.get(locationUri).get(0);
 			// Set the mirror of location uri
-			firstLocation.setUri(MirrorManager.getInstance().getMirrorUrl(firstLocation.getUri()));
+			firstLocation.setUri(MavenSettingsManager.getInstance().getMirrorUrl(firstLocation.getUri()));
 			ResolvedLocation resolvedLocation = new ResolvedLocation(firstLocation.getID(), firstLocation.getUri(), ius, getOptionSet(firstLocation.getOptions()));
 			locations.addFirst(resolvedLocation);
 		}

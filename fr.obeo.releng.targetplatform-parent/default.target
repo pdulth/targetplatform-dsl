@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="Target Platform DSL 2.1.1" sequenceNumber="1512476115">
+<target name="Target Platform DSL 2.1.1" sequenceNumber="1584534438">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.equinox.p2.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.pde.core" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.p2.sdk.feature.group" version="3.10.3.v20180207-1239"/>
+      <unit id="org.eclipse.sdk.feature.group" version="4.7.3.v20180330-0919"/>
+      <unit id="org.eclipse.pde.core" version="3.11.101.v20171228-1230"/>
       <repository location="http://download.eclipse.org/eclipse/updates/4.7"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.ecore.xcore.feature.group" version="1.2.2.v20150202-0452"/>
       <unit id="org.eclipse.emf.ecore.xcore.source.feature.group" version="1.2.2.v20150202-0452"/>
+      <unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.2.2.v20150202-0452"/>
+      <unit id="org.eclipse.emf.ecore.xcore.ui.feature.group" version="1.2.1.v20150202-0452"/>
       <repository location="http://download.eclipse.org/modeling/emf/emf/updates/2.10.x/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
@@ -23,6 +25,7 @@
       <unit id="org.eclipse.xtext.junit4.source" version="2.7.2.v201409160908"/>
       <unit id="org.objectweb.asm" version="5.0.1.v201404251740"/>
       <unit id="org.objectweb.asm.source" version="5.0.1.v201404251740"/>
+      <unit id="org.eclipse.xtend.sdk.feature.group" version="2.7.2.v201409160908"/>
       <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/maintenance/R201409160908/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
