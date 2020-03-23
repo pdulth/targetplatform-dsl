@@ -16,7 +16,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -71,7 +74,7 @@ public class MavenSettingsManager {
 	protected String settingsFileLocation;
 
 	protected List<Mirror> mirrors;
-	protected List<Server> servers;
+	protected Map<String, Server> servers;
 
 	private MavenSettingsManager() {
 		extractSettingsFileLocation();
@@ -99,7 +102,7 @@ public class MavenSettingsManager {
 
 	private void extractDataFromSettingsFile() {
 		mirrors = new ArrayList<>();
-		servers = new ArrayList<>();
+		servers = new HashMap<>();
 
 		if (settingsFileLocation != null) {
 			try {
@@ -146,7 +149,7 @@ public class MavenSettingsManager {
 							String username = usernameNode.getTextContent();
 							String password = passwordNode.getTextContent();
 
-							servers.add(new Server(domainName, username, password));
+							servers.put(domainName, new Server(domainName, username, password));
 						} catch (URISyntaxException e) {
 							TargetPlatformBundleActivator.logger.warn("Invalid server id " + id);
 						}
@@ -182,11 +185,22 @@ public class MavenSettingsManager {
 		return originalUrl;
 	}
 
-	public List<Server> getServerSettings() {
-		return servers;
+	public Server getServerSettings(String url) {
+		try {
+			String domainName = getDomainName(url);
+			return servers.get(domainName);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public Collection<Server> getServerSettings() {
+		return servers.values();
 	}
 
-	public void overrideP2ServerSettings(List<Server> mavenServers) {
+	public void overrideP2ServerSettings(Collection<Server> mavenServers) {
 
 		if (!mavenServers.isEmpty()) {
 			ISecurePreferences preferences = SecurePreferencesFactory.getDefault();

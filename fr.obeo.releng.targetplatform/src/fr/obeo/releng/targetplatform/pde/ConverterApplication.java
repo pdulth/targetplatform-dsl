@@ -11,8 +11,8 @@
 package fr.obeo.releng.targetplatform.pde;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -53,7 +53,7 @@ public class ConverterApplication implements IApplication {
     }
     
     MavenSettingsManager mavenSettingsManager = MavenSettingsManager.getInstance();
-	  List<Server> serverSettings = mavenSettingsManager.getServerSettings();
+	  Collection<Server> serverSettings = mavenSettingsManager.getServerSettings();
 	  mavenSettingsManager.overrideP2ServerSettings(serverSettings);    
 
     TargetPlatformStandaloneSetup.doSetup();

@@ -143,7 +143,10 @@ class LocationIndexBuilder {
 		var root = resource?.getContents()?.head;
 		if (root instanceof TargetPlatform) {
 			ret = root as TargetPlatform;
+			ResourceUtil.replaceLocations(ret);
 		}
+		
+		
 		return ret;
 	}
 }

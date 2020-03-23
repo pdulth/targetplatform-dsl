@@ -48,6 +48,7 @@ import fr.obeo.releng.targetplatform.TargetPlatformBundleActivator;
 import fr.obeo.releng.targetplatform.TargetPlatformPackage;
 import fr.obeo.releng.targetplatform.resolved.ResolvedTargetPlatform;
 import fr.obeo.releng.targetplatform.util.LocationIndexBuilder;
+import fr.obeo.releng.targetplatform.util.ResourceUtil;
 
 /**
  * @author <a href="mailto:mikael.barbero@obeo.fr">Mikael Barbero</a>
@@ -96,6 +97,10 @@ public class Converter {
 				TargetPlatform targetPlatform = null;
 				if (resource != null && !resource.getContents().isEmpty()) {
 					targetPlatform = (TargetPlatform) resource.getContents().get(0);
+					// replace locations with data from maven settings
+					
+					ResourceUtil.replaceLocations(targetPlatform);
+				
 				}
 				if (targetPlatform == null) {
 					ret.merge(new BasicDiagnostic(Diagnostic.ERROR, TargetPlatformBundleActivator.PLUGIN_ID, -1, "Error occured while loading the file " + uri + ".", null));
