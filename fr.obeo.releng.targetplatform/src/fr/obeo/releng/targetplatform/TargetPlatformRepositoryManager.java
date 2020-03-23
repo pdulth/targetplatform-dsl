@@ -9,6 +9,8 @@ import org.eclipse.equinox.p2.core.IProvisioningAgent;
 import org.eclipse.equinox.p2.core.ProvisionException;
 import org.eclipse.equinox.p2.repository.metadata.IMetadataRepository;
 
+import fr.obeo.releng.targetplatform.resolved.MavenSettingsManager;
+
 public class TargetPlatformRepositoryManager extends MetadataRepositoryManager {
 
   public TargetPlatformRepositoryManager(IProvisioningAgent agent) {
@@ -27,11 +29,26 @@ public class TargetPlatformRepositoryManager extends MetadataRepositoryManager {
   @Override
   public IMetadataRepository loadRepository(URI location, int flags, IProgressMonitor monitor)
       throws ProvisionException {
+	    URI uri = location;
+	  
+      String currentUri = location.toString();
+      String transformedUri = MavenSettingsManager.getInstance().getMirrorUrl(currentUri);
+      
+      if(!currentUri.equals(transformedUri)) {
+        System.err.println("Replacing repository load: " + currentUri + " with " + transformedUri + " from settings.xml");
+        try {
+			uri = new URI(transformedUri);
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+      }
 
     ProvisionException result = null;
     for (int i = 0; i < 5; i++) {
       try {
-        IMetadataRepository repository = super.loadRepository(location, flags, monitor);
+        IMetadataRepository repository = super.loadRepository(uri, flags, monitor);
+        
         if (repository != null) {
           return repository;
         }
